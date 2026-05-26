@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Human-Centric SRS - 인간중심 추천 알고리즘</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <h1 class="logo">🎯 Human-Centric SRS</h1>
+            <ul class="nav-links">
+                <li><a href="#overview">개요</a></li>
+                <li><a href="#solution">솔루션</a></li>
+                <li><a href="#formula">공식</a></li>
+                <li><a href="#demo">데모</a></li>
+                <li><a href="#impact">임팩트</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>다빈치가 된 알고리즘 시대<br>인간성을 되찾다</h1>
+            <p>AI 자동화와 인간의 창의성이 조화를 이루는 추천 알고리즘</p>
+            <button class="cta-btn" onclick="document.getElementById('demo').scrollIntoView({ behavior: 'smooth' })">데모 보기</button>
+        </div>
+    </section>
+
+    <!-- Overview Section -->
+    <section id="overview" class="section">
+        <div class="container">
+            <h2>🎯 프로젝트 개요</h2>
+            <div class="problem-grid">
+                <div class="problem-card">
+                    <div class="icon">🚨</div>
+                    <h3>디지털 불안감</h3>
+                    <p>AI 콘텐츠만 노출되는 버블 현상</p>
+                </div>
+                <div class="problem-card">
+                    <div class="icon">📉</div>
+                    <h3>양면 시장 붕괴</h3>
+                    <p>인간 창작자 도태</p>
+                </div>
+                <div class="problem-card">
+                    <div class="icon">🔒</div>
+                    <h3>선택권 박탈</h3>
+                    <p>알고리즘의 독재</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section id="solution" class="section bg-light">
+        <div class="container">
+            <h2>💡 핵심 솔루션: "안티-버블 슬라이더"</h2>
+            <div class="solution-content">
+                <div class="solution-text">
+                    <p>사용자가 <strong>능동적으로</strong> AI vs 인간 창작 콘텐츠의 비율을 조절할 수 있는 UI 슬라이더입니다.</p>
+                    <div class="slider-visual">
+                        <div class="slider-bar">
+                            <div class="slider-thumb"></div>
+                        </div>
+                        <div class="slider-labels">
+                            <span>🤖 AI 중심</span>
+                            <span>👨‍🎨 인간 중심</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="solution-image">
+                    <div class="benefit-list">
+                        <h4>✅ 사용자 관점</h4>
+                        <ul>
+                            <li>선택권 회복</li>
+                            <li>신뢰도 향상</li>
+                            <li>개인화된 경험</li>
+                        </ul>
+                        <h4 style="margin-top: 20px;">✅ 창작자 관점</h4>
+                        <ul>
+                            <li>인간 창작 생존 가능</li>
+                            <li>공정한 경쟁 환경</li>
+                            <li>지속 가능한 생태계</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Formula Section -->
+    <section id="formula" class="section">
+        <div class="container">
+            <h2>📐 권장 점수 계산 공식</h2>
+            <div class="formula-box">
+                <div class="formula-main">
+                    <h3>최종 점수 공식</h3>
+                    <div class="math-formula">
+                        최종점수 = 우연성점수 × (1 + 알파 × 인간지수)
+                    </div>
+                </div>
+            </div>
+            
+            <div class="formula-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>변수</th>
+                            <th>범위</th>
+                            <th>설명</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>우연성점수</strong></td>
+                            <td>0.0 ~ 1.0</td>
+                            <td>콘텐츠의 기술적 신선도 및 다양성</td>
+                        </tr>
+                        <tr>
+                            <td><strong>인간지수</strong></td>
+                            <td>0.0 ~ 1.0</td>
+                            <td>AI 탐지 모델로 계산한 인간 저작 확률</td>
+                        </tr>
+                        <tr>
+                            <td><strong>알파</strong></td>
+                            <td>0.5 ~ 1.5</td>
+                            <td>플랫폼 상생 가중치 (사용자 슬라이더 반영)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>최종점수</strong></td>
+                            <td>0.7 ~ 2.0+</td>
+                            <td>추천 알고리즘에 사용되는 최종 순위 점수</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="alpha-explanation">
+                <h3>🔑 알파(가중치) 계산 규칙</h3>
+                <div class="alpha-rules">
+                    <div class="rule-item">
+                        <span class="tag off">슬라이더 OFF</span>
+                        <p><strong>알파 = 0.5</strong> (기본 균형)</p>
+                    </div>
+                    <div class="rule-item">
+                        <span class="tag on">슬라이더 ON</span>
+                        <p><strong>알파 = 슬라이더값 × 1.5</strong> (최대 1.5)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demo Section -->
+    <section id="demo" class="section bg-light">
+        <div class="container">
+            <h2>🎮 인터랙티브 데모</h2>
+            <div class="demo-wrapper">
+                <div class="demo-controls">
+                    <h3>슬라이더 값을 조절해보세요</h3>
+                    <div class="slider-group">
+                        <label for="sliderToggle">슬라이더 활성화</label>
+                        <input type="checkbox" id="sliderToggle" checked>
+                    </div>
+                    <div class="slider-group">
+                        <label for="sliderValue">슬라이더 값: <span id="sliderValueDisplay">0.5</span></label>
+                        <input type="range" id="sliderValue" min="0" max="1" step="0.05" value="0.5">
+                    </div>
+                    <div class="demo-params">
+                        <div class="param-input">
+                            <label for="srsScore">우연성점수 (SRS Score)</label>
+                            <input type="number" id="srsScore" min="0" max="1" step="0.01" value="0.7">
+                        </div>
+                        <div class="param-input">
+                            <label for="humanIndex">인간지수 (Human Index)</label>
+                            <input type="number" id="humanIndex" min="0" max="1" step="0.01" value="0.8">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="demo-results">
+                    <h3>📊 계산 결과</h3>
+                    <div class="result-card">
+                        <div class="result-row">
+                            <span class="label">현재 슬라이더 값:</span>
+                            <span class="value" id="resultSliderValue">0.5</span>
+                        </div>
+                        <div class="result-row">
+                            <span class="label">알파 (Alpha):</span>
+                            <span class="value" id="resultAlpha">0.75</span>
+                        </div>
+                        <div class="divider"></div>
+                        <div class="result-row">
+                            <span class="label">우연성점수:</span>
+                            <span class="value" id="resultSRS">0.70</span>
+                        </div>
+                        <div class="result-row">
+                            <span class="label">인간지수:</span>
+                            <span class="value" id="resultHuman">0.80</span>
+                        </div>
+                        <div class="divider"></div>
+                        <div class="result-row final">
+                            <span class="label">최종 점수:</span>
+                            <span class="value" id="resultFinal">1.12</span>
+                        </div>
+                        <p class="calculation" id="resultCalculation"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Section -->
+    <section id="impact" class="section">
+        <div class="container">
+            <h2>💼 비즈니스 임팩트</h2>
+            <div class="impact-comparison">
+                <div class="impact-card before">
+                    <h3>❌ Before (현재)</h3>
+                    <ul>
+                        <li>사용자: AI 콘텐츠에 갇혀 있음</li>
+                        <li>창작자: 인간은 도태됨</li>
+                        <li>플랫폼: 신뢰도 하락</li>
+                    </ul>
+                </div>
+                <div class="arrow">→</div>
+                <div class="impact-card after">
+                    <h3>✅ After (솔루션 적용)</h3>
+                    <ul>
+                        <li>사용자: 선택권 회복 (슬라이더 제어)</li>
+                        <li>창작자: 인간 창작 콘텐츠 생존 가능</li>
+                        <li>플랫폼: 양면 시장 건강성 유지</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Human-Centric SRS Project | 🧑‍💻 Developer: <a href="https://github.com/KJA012" target="_blank">KJA012</a></p>
+            <p><a href="https://github.com/KJA012/Human-Centric-SRS-1-" target="_blank">📂 GitHub Repository</a></p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
