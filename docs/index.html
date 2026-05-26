@@ -3,38 +3,106 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Human-Centric SRS 시뮬레이터</title>
+    <title>Human-Centric SRS - 인간 중심의 추천 시스템</title>
     <style>
-        /* 🍊 사용자가 좋아하셨던 오리지널 주황색 톤 인터페이스 복원 */
-        body { 
-            font-family: 'Malgun Gothic', sans-serif; 
-            background-color: #fcf8f5; 
-            margin: 0; 
-            padding: 20px; 
-            display: flex; 
-            flex-direction: column; 
-            align-items: center; 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        .container { 
-            background: white; 
-            padding: 30px; 
-            border-radius: 12px; 
-            box-shadow: 0 4px 15px rgba(255, 102, 0, 0.08); 
-            width: 100%; 
-            max-width: 550px; 
-            box-sizing: border-box; 
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+            line-height: 1.6;
+            color: #333;
         }
-        
-        h1 { color: #ff5500; font-size: 24px; margin-bottom: 5px; text-align: center; font-weight: bold; }
-        .subtitle { font-size: 13px; color: #666; text-align: center; margin-bottom: 20px; }
-        
-        label { font-weight: bold; display: block; margin-top: 15px; color: #444; }
-        input[type="text"] { width: 100%; padding: 10px; margin-top: 5px; border: 1px solid #ffd8c2; border-radius: 6px; box-sizing: border-box; }
-        
-        /* 슬라이더 스타일 */
-        .slider-group { display: flex; align-items: center; justify-content: space-between; margin-top: 5px; }
-        input[type="range"] { width: 80%; cursor: pointer; accent-color: #ff6600; }
-        .value-display { font-weight: bold; color: #ff5500; width: 15%; text-align: right; }
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .section {
+            margin: 3rem 0;
+            padding: 2rem;
+            border-left: 4px solid #667eea;
+            background: #f8f9fa;
+            border-radius: 4px;
+        }
+        .section h2 {
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+        a {
+            color: #667eea;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🤖 Human-Centric SRS</h1>
+        <p>인간 중심의 추천 시스템</p>
+    </header>
+
+    <div class="container">
+        <div class="section">
+            <h2>📌 프로젝트 소개</h2>
+            <p>
+                본 프로젝트는 <strong>'다빈치가 된 알고리즘' 시대</strong>의 '창의성 자동화'가 초래하는 유저의 디지털 불안과 
+                플랫폼 양면 시장의 붕괴(인간 창작자 도태)를 해결하기 위해 고안되었습니다.
+            </p>
+            <p style="margin-top: 1rem;">
+                기존의 기술적 우연성 추천 시스템(SRS)을 고도화하여, <strong>인간 고유의 '불완전한 서사(결핍, 노고)'</strong>를 
+                수학적으로 우대하는 메커니즘을 제공합니다.
+            </p>
+        </div>
+
+        <div class="section">
+            <h2>🎯 핵심 목표</h2>
+            <ul style="margin-left: 2rem;">
+                <li>디지털 불안 완화</li>
+                <li>인간 창작자의 경쟁력 강화</li>
+                <li>플랫폼 양면 시장의 지속성 보장</li>
+                <li>알고리즘의 투명성 증대</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>🔗 연결</h2>
+            <p>
+                📂 <a href="https://github.com/KJA012/Human-Centric-SRS-1-" target="_blank">GitHub 저장소</a>
+            </p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Human-Centric SRS Project. All rights reserved.</p>
+    </footer>
+</body>
+</html>        .value-display { font-weight: bold; color: #ff5500; width: 15%; text-align: right; }
         
         /* 시그니처 주황색 버튼 */
         button { 
