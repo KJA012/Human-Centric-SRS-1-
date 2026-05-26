@@ -1,0 +1,71 @@
+.overview {
+  padding: 80px 2rem;
+  background: white;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.overview h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.section-description {
+  font-size: 1.2rem;
+  color: #666;
+  margin-bottom: 3rem;
+}
+
+.problems-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.problem-card {
+  background: linear-gradient(135deg, #f5f7fa 0%, #e9ecef 100%);
+  padding: 2rem;
+  border-radius: 8px;
+  border-left: 4px solid #6366f1;
+  transition: all 0.3s;
+}
+
+.problem-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.problem-card .icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.problem-card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 0.75rem;
+  color: #333;
+}
+
+.problem-card p {
+  color: #666;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+@media (max-width: 768px) {
+  .overview {
+    padding: 60px 1rem;
+  }
+
+  .overview h2 {
+    font-size: 2rem;
+  }
+
+  .section-description {
+    font-size: 1rem;
+  }
+}

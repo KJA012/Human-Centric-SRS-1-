@@ -1,0 +1,11 @@
+.App {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 20px;
+  }
+}
