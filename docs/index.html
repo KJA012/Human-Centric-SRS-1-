@@ -3,140 +3,278 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Human-Centric SRS 시뮬레이터</title>
+    <title>Human-Centric SRS Simulator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        body { font-family: 'Malgun Gothic', sans-serif; background-color: #f4f6f9; margin: 0; padding: 20px; display: flex; flex-direction: column; align-items: center; }
-        .container { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); width: 100%; max-width: 550px; box-sizing: border-box; }
-        h1 { color: #333; font-size: 24px; margin-bottom: 20px; text-align: center; }
-        label { font-weight: bold; display: block; margin-top: 15px; color: #555; }
-        input[type="text"] { width: 100%; padding: 10px; margin-top: 5px; border: 1px solid #ddd; border-radius: 6px; box-sizing: border-box; }
-        .slider-group { display: flex; align-items: center; justify-content: space-between; margin-top: 5px; }
-        input[type="range"] { width: 80%; }
-        .value-display { font-weight: bold; color: #007bff; width: 15%; text-align: right; }
-        button { width: 100%; padding: 12px; background: #007bff; color: white; border: none; border-radius: 6px; font-size: 16px; font-weight: bold; margin-top: 25px; cursor: pointer; transition: 0.2s; }
-        button:hover { background: #0056b3; }
-        
-        .result-box { margin-top: 25px; padding: 20px; background: #e9ecef; border-radius: 8px; display: none; }
-        .result-title { font-size: 18px; font-weight: bold; margin-bottom: 10px; color: #212529; }
-        .metric { font-size: 20px; color: #28a745; font-weight: bold; margin: 5px 0; }
-        .diagnosis { margin-top: 10px; font-size: 14px; color: #495057; line-height: 1.5; background: #fff; padding: 10px; border-left: 4px solid #28a745; border-radius: 4px; }
-        
-        .tab-container { margin-top: 30px; background: #fff; padding: 20px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); width: 100%; max-width: 550px; box-sizing: border-box; }
-        .tab-menu { display: flex; flex-wrap: wrap; border-bottom: 2px solid #e9ecef; padding-bottom: 10px; gap: 5px; }
-        .tab-btn { padding: 8px 14px; border: none; background: #f8f9fa; cursor: pointer; border-radius: 20px; font-weight: bold; font-size: 12px; color: #495057; transition: 0.2s; }
-        .tab-btn:hover { background: #e9ecef; }
-        .tab-btn.active { background: #007bff; color: white; }
-        .tab-content { display: none; padding: 20px 10px; line-height: 1.6; font-size: 14px; color: #333; }
-        .tab-content.active { display: block; animation: fadeIn 0.3s ease-in-out; }
-        .formula-box { background: #f1f3f5; padding: 12px; border-radius: 6px; font-family: 'Courier New', monospace; font-weight: bold; margin: 10px 0; color: #0056b3; font-size: 13px; }
-        .badge { display: inline-block; padding: 3px 8px; background: #28a745; color: white; border-radius: 4px; font-size: 11px; margin-bottom: 8px; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+        :root {
+            --primary: #002D5E;
+            --secondary: #00A676;
+            --accent: #FF5A5F;
+            --bg: #F8FAFC;
+            --white: #FFFFFF;
+            --text-main: #1E293B;
+            --text-sub: #64748B;
+        }
+
+        * { box-sizing: border-box; }
+        body { 
+            background-color: var(--bg); 
+            margin: 0; padding: 40px 20px; 
+            font-family: 'Lato', sans-serif; 
+            color: var(--text-main);
+            display: flex; flex-direction: column; align-items: center;
+        }
+
+        .slide-container {
+            background: var(--white);
+            width: 100%;
+            max-width: 800px;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+            padding: 40px;
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header-bg {
+            position: absolute; top: 0; left: 0; width: 100%; height: 8px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+        }
+
+        h1 { 
+            font-family: 'Poppins', sans-serif; font-size: 32px; font-weight: 700;
+            color: var(--primary); margin: 0 0 10px 0; text-align: left;
+        }
+
+        .subtitle { color: var(--text-sub); font-size: 16px; margin-bottom: 30px; }
+
+        .input-section { display: grid; gap: 20px; }
+        .slider-row { background: #F1F5F9; padding: 15px 20px; border-radius: 12px; }
+        .slider-row label { display: block; font-weight: 700; font-size: 14px; margin-bottom: 10px; color: var(--primary); }
+        .slider-control { display: flex; align-items: center; gap: 15px; }
+        input[type="range"] { flex-grow: 1; accent-color: var(--primary); cursor: pointer; }
+        .val-badge { background: var(--primary); color: white; padding: 4px 10px; border-radius: 6px; font-weight: bold; min-width: 50px; text-align: center; font-size: 14px; }
+
+        .h-slider { accent-color: var(--secondary) !important; }
+        .h-slider + .val-badge { background: var(--secondary); }
+
+        button { 
+            width: 100%; padding: 18px; background: var(--primary); color: white;
+            border: none; border-radius: 12px; font-size: 18px; font-weight: 700;
+            cursor: pointer; transition: 0.3s; margin-top: 20px;
+            font-family: 'Poppins', sans-serif;
+        }
+        button:hover { background: #001A35; transform: translateY(-2px); box-shadow: 0 5px 15px rgba(0,45,94,0.3); }
+
+        .result-box { 
+            margin-top: 30px; padding: 25px; border-radius: 12px; 
+            border: 2px solid var(--secondary); background: #F0FFF4; display: none;
+            animation: fadeIn 0.5s ease-out;
+        }
+        .result-score { font-size: 36px; font-weight: 700; color: var(--secondary); margin: 10px 0; }
+        .diagnosis-text { font-size: 15px; color: #166534; line-height: 1.6; }
+
+        .comparison-section { margin-top: 40px; }
+        .comparison-section h2 { font-size: 20px; color: var(--primary); border-left: 4px solid var(--primary); padding-left: 12px; margin-bottom: 20px; }
+        table { width: 100%; border-collapse: collapse; background: var(--white); font-size: 14px; }
+        th { background: #F8FAFC; color: var(--text-sub); font-weight: 600; padding: 15px; text-align: left; border-bottom: 2px solid #E2E8F0; }
+        td { padding: 15px; border-bottom: 1px solid #E2E8F0; }
+        .tag { padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: bold; }
+        .tag-ai { background: #FEE2E2; color: #991B1B; }
+        .tag-human { background: #D1FAE5; color: #065F46; }
+        .tag-base { background: #DBEAFE; color: #1E40AF; }
+
+        .tab-wrapper { margin-top: 40px; }
+        .tab-menu { display: flex; gap: 10px; margin-bottom: 15px; flex-wrap: wrap; }
+        .tab-btn { 
+            padding: 10px 18px; border: 1px solid #E2E8F0; background: white;
+            border-radius: 30px; cursor: pointer; font-size: 13px; font-weight: 600; transition: 0.2s;
+        }
+        .tab-btn.active { background: var(--primary); color: white; border-color: var(--primary); }
+        .tab-content { display: none; padding: 20px; background: #F8FAFC; border-radius: 12px; font-size: 14px; line-height: 1.7; border: 1px solid #E2E8F0; }
+        .tab-content.active { display: block; }
+        .formula { background: #E2E8F0; padding: 10px; border-radius: 6px; font-family: monospace; font-weight: bold; margin: 10px 0; display: inline-block; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <h1>📱 Human-Centric SRS <br><span style="font-size:16px; color:#666;">알고리즘 라이브 시뮬레이터</span></h1>
-    <p style="font-size:13px; color:#777; text-align:center;">생성형 AI 시대, 디지털 불안 해소를 위한 추천 시스템 프로토타입</p>
-    <hr style="border: 0; height: 1px; background: #eee;">
+<div class="slide-container">
+    <div class="header-bg"></div>
+    <h1>Human-Centric SRS Simulation</h1>
+    <p class="subtitle">생성형 AI 시대의 디지털 필터 버블 해소와 인간 창작자 상생을 위한 알고리즘 프로토타입</p>
 
-    <label for="contentName">🎬 콘텐츠 이름</label>
-    <input type="text" id="contentName" value="나의 투박한 실패 극복 브이로그">
+    <div class="input-section">
+        <div class="slider-row">
+            <label><i class="fa-solid fa-hourglass-start"></i> 1. 콘텐츠 신선도 (F-Index) <span style="font-weight:normal; color:#64748B;">[Weight: 0.2]</span></label>
+            <div class="slider-control">
+                <input type="range" id="fresh" min="0" max="1" step="0.1" value="0.7" oninput="updateVal('fBadge', this.value)">
+                <span class="val-badge" id="fBadge">0.7</span>
+            </div>
+        </div>
 
-    <label for="freshness">⏱️ 콘텐츠 신선도 지수 (Weight: 20%)</label>
-    <div class="slider-group">
-        <input type="range" id="freshness" min="0" max="1" step="0.1" value="0.7" oninput="updateVal('freshVal', this.value)">
-        <span id="freshVal" class="value-display">0.7</span>
+        <div class="slider-row">
+            <label><i class="fa-solid fa-layer-group"></i> 2. 장르 다양성 (D-Index) <span style="font-weight:normal; color:#64748B;">[Weight: 0.3]</span></label>
+            <div class="slider-control">
+                <input type="range" id="diverse" min="0" max="1" step="0.1" value="0.8" oninput="updateVal('dBadge', this.value)">
+                <span class="val-badge" id="dBadge">0.8</span>
+            </div>
+        </div>
+
+        <div class="slider-row">
+            <label><i class="fa-solid fa-dice"></i> 3. 데이터 참신함 (N-Index) <span style="font-weight:normal; color:#64748B;">[Weight: 0.5]</span></label>
+            <div class="slider-control">
+                <input type="range" id="novel" min="0" max="1" step="0.1" value="0.6" oninput="updateVal('nBadge', this.value)">
+                <span class="val-badge" id="nBadge">0.6</span>
+            </div>
+        </div>
+
+        <div class="slider-row" style="border: 2px solid var(--secondary); background: #F0FFF4;">
+            <label style="color: var(--secondary);"><i class="fa-solid fa-dna"></i> 4. 인간 서사 지수 (H-Index)</label>
+            <div class="slider-control">
+                <input type="range" id="human" class="h-slider" min="0" max="1" step="0.1" value="0.8" oninput="updateVal('hBadge', this.value)">
+                <span class="val-badge" id="hBadge">0.8</span>
+            </div>
+        </div>
+
+        <div class="slider-row" style="border: 2px solid var(--primary);">
+            <label><i class="fa-solid fa-sliders"></i> 5. 안티-버블 슬라이더 (Alpha Booster)</label>
+            <div class="slider-control">
+                <input type="range" id="alpha" min="0" max="1" step="0.1" value="0.5" oninput="updateVal('aBadge', this.value)">
+                <span class="val-badge" id="aBadge">0.5</span>
+            </div>
+        </div>
     </div>
 
-    <label for="diversity">🧩 카테고리 다양성 지수 (Weight: 30%)</label>
-    <div class="slider-group">
-        <input type="range" id="diversity" min="0" max="1" step="0.1" value="0.8" oninput="updateVal('divVal', this.value)">
-        <span id="divVal" class="value-display">0.8</span>
+    <button onclick="runSimulation()">시뮬레이션 가동 및 가중치 분석</button>
+
+    <div id="result" class="result-box">
+        <div style="font-weight:700; color: var(--primary);">분석 결과 도출됨</div>
+        <div class="result-score"><span id="resFinal">0.00</span> 점</div>
+        <div class="diagnosis-text" id="resDiagnosis"></div>
+        <div style="font-size:12px; color:var(--text-sub); margin-top:10px;">기본 SRS 점수: <span id="resBase">0.00</span></div>
     </div>
 
-    <label for="novelty">🎲 메타데이터 참신함 지수 (Weight: 50%)</label>
-    <div class="slider-group">
-        <input type="range" id="novelty" min="0" max="1" step="0.1" value="0.6" oninput="updateVal('novelVal', this.value)">
-        <span id="novelVal" class="value-display">0.6</span>
+    <div class="comparison-section">
+        <h2>🎯 실제 플랫폼 적용 시나리오 분석</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>슬라이더 설정</th>
+                    <th>알파($\alpha$)</th>
+                    <th>최종 점수</th>
+                    <th>플랫폼 내 영향력</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><span class="tag tag-base">기본 (OFF)</span></td>
+                    <td>0.50</td>
+                    <td><span id="scenOff">0.98</span></td>
+                    <td>전통적 추천 로직 유지 (균형 피드)</td>
+                </tr>
+                <tr>
+                    <td><span class="tag tag-ai">AI 콘텐츠 (0.0)</span></td>
+                    <td>0.00</td>
+                    <td><span id="scenAi">0.70</span></td>
+                    <td>정보성 위주의 효율적 노출</td>
+                </tr>
+                <tr>
+                    <td><span class="tag tag-human">중간 선호 (0.5)</span></td>
+                    <td>0.75</td>
+                    <td><span id="scenMid">1.12</span></td>
+                    <td>인간 창작물 약 14% 부스트</td>
+                </tr>
+                <tr>
+                    <td><span class="tag tag-human" style="background:#059669; color:white;">인간 선호 (1.0)</span></td>
+                    <td>1.50</td>
+                    <td><span id="scenMax">1.54</span></td>
+                    <td>인간 서사 콘텐츠 57% 폭발 노출</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 
-    <hr style="border: 0; height: 1px; background: #eee; margin-top: 20px;">
-
-    <label for="hIndex">🧬 인간 서사 지수 (H Index)</label>
-    <div class="slider-group">
-        <input type="range" id="hIndex" min="0" max="1" step="0.1" value="0.8" oninput="updateVal('hVal', this.value)">
-        <span id="hVal" class="value-display">0.8</span>
-    </div>
-
-    <label for="sliderVal">🎛️ 안티-버블 슬라이더 가동 수치</label>
-    <div class="slider-group">
-        <input type="range" id="sliderVal" min="0" max="1" step="0.1" value="0.5" oninput="updateVal('sliderValDisplay', this.value)">
-        <span id="sliderValDisplay" class="value-display">0.5</span>
-    </div>
-
-    <button onclick="runSimulation()">알고리즘 시뮬레이션 실행</button>
-
-    <div id="resultBox" class="result-box">
-        <div class="result-title" id="resName">🎬 콘텐츠 결과</div>
-        <div style="font-size: 14px; color:#555;">기존 기술 기반 SRS 기본 점수: <span id="resOld" style="font-weight:bold;">0</span>점</div>
-        <div class="metric">최종 인간 중심 추천 점수: <span id="resFinal">0</span>점</div>
-        <div class="diagnosis" id="resDiagnosis"></div>
+    <div class="tab-wrapper">
+        <div class="tab-menu">
+            <button class="tab-btn active" onclick="openTab(event, 't1')">공식 개요</button>
+            <button class="tab-btn" onclick="openTab(event, 't2')">SRS 지표</button>
+            <button class="tab-btn" onclick="openTab(event, 't3')">인간 서사(H)</button>
+            <button class="tab-btn" onclick="openTab(event, 't4')">알파(α)</button>
+        </div>
+        <div id="t1" class="tab-content active">
+            <strong>최종 추천 점수 공식:</strong><br>
+            <div class="formula">Score = SRS × (1 + α × H)</div><br>
+            기존의 기술적 우연성 점수(SRS)에 사용자의 능동적 선택권($\alpha$)과 창작자의 인간성 지표($H$)를 결합한 상생형 알고리즘입니다.
+        </div>
+        <div id="t2" class="tab-content">
+            <strong>SRS (Serendipity Recommendation Score):</strong><br>
+            신선도(20%), 다양성(30%), 참신함(50%)을 수학적으로 합산한 베이스라인 점수입니다. 생성형 AI 콘텐츠와 인간 콘텐츠 모두에게 공평하게 적용되는 '기술적 재미'의 척도입니다.
+        </div>
+        <div id="t3" class="tab-content">
+            <strong>H-Index (Human Authorship):</strong><br>
+            AI 탐지 모델과 크라우드 소싱 인증을 통해 산출된 '인간 창작 확률'입니다. 0에 가까울수록 AI 양산형, 1에 가까울수록 인간의 고유한 노고가 담긴 서사를 의미합니다.
+        </div>
+        <div id="t4" class="tab-content">
+            <strong>Alpha ($\alpha$):</strong><br>
+            사용자가 안티-버블 슬라이더를 통해 직접 부여하는 가중치입니다. 최대 1.5까지 확장되며, 인간 창작물($H$)의 점수를 증폭시켜 필터 버블을 깨뜨리는 에너지가 됩니다.
+        </div>
     </div>
 </div>
 
-<div class="tab-container">
-    <h3 style="margin-top:0; color:#212529;">🔍 알고리즘 상세 지표 설명서</h3>
-    <p style="font-size:12px; color:#868e96; margin-bottom:15px;">각 지표를 클릭하면 수학적 산출 기준과 기획 의도를 확인할 수 있습니다.</p>
-    
-    <div class="tab-menu">
-        <button class="tab-btn active" onclick="openTab(event, 'tab-fresh')">⏱️ 신선도</button>
-        <button class="tab-btn" onclick="openTab(event, 'tab-div')">🧩 다양성</button>
-        <button class="tab-btn" onclick="openTab(event, 'tab-novel')">🎲 참신함</button>
-        <button class="tab-btn" onclick="openTab(event, 'tab-human')">🧬 인간지수</button>
-        <button class="tab-btn" onclick="openTab(event, 'tab-alpha')">🎛️ 알파</button>
-        <button class="tab-btn" onclick="openTab(event, 'tab-final')">📊 최종점수</button>
-    </div>
-
-    <div id="tab-fresh" class="tab-content active">
-        <span class="badge">산출 기준: 시간적 공백 및 키워드 미개척도</span>
-        <div>초창기 공식 분모에 있던 <strong>'뻔한 검색 키워드'</strong>와 분자의 <strong>'평균 별점'</strong>을 알고리즘적으로 정규화한 지표입니다. 단순히 영상이 올라온 시간적 최신성뿐만 아니라, <strong>유저의 기존 소비 데이터(이력)와 비교했을 때 얼마나 생소한 키워드 영역인가</strong>를 판별하여 0과 1 사이로 계산합니다. 이미 시청한 영상은 0점 처리되어 필터 버블의 중복 고착화를 차단합니다.</div>
-    </div>
-
-    <div id="tab-div" class="tab-content">
-        <span class="badge">산출 기준: 유저 프로필과 타겟 콘텐츠 장르 간 수학적 거리</span>
-        <div>유저가 평소 즐겨 보던 메인 카테고리 집합과 추천 대상 콘텐츠 카테고리 간의 <strong>'벡터 거릿값(이질성)'</strong>을 기준으로 계산합니다. 기존에 형성된 시청 범주(버블)에서 멀리 떨어져 있는 낯선 장르의 콘텐츠일수록 높은 점수를 부여받습니다.</div>
-    </div>
-
-    <div id="tab-novel" class="tab-content">
-        <span class="badge">산출 기준: 비유사 장르 콘텐츠 간 숨은 메타데이터 연관 계수</span>
-        <div>표면상으로는 전혀 상관없어 보이는 두 콘텐츠(예: 과학과 예술)가 <strong>'태그 및 메타데이터'의 깊은 내부 층위에서 공유하는 숨은 연관성</strong>을 기준으로 연산합니다. 겉보기엔 완전히 엉뚱하지만 유저의 잠재 취향을 관통하는 '진정한 우연성(Serendipity)'을 결정하는 핵심 엔진입니다.</div>
-        <div class="formula-box">💡 고정 비율(50%) 설정 이유: 본 시스템의 최우선 목적이 '필터 버블 타파(의외성 발견)'에 있으므로, 베이스라인 시스템 유지를 위한 신선도(20%), 다양성(30%)에 비해 '참신함' 변수에 가중치를 압도적으로 높게 배정한 기획전략적 의사결정의 결과입니다.</div>
-    </div>
-
-    <div id="tab-human" class="tab-content">
-        <span class="badge">산출 기준: 크라우드 소싱 기반 집단지성 투표 및 프로세스 인증제</span>
-        <div>콘텐츠 공급 측면(Supply Side)에서 <strong>제작 과정에 투입된 인간 창작자의 진정성과 불완전한 노고의 총량</strong>을 뜻합니다. 전수 검수 시 발생하는 비용·시간 장벽을 극복하기 위해, <strong>'유저 집단지성 투표 리워드제'</strong>와 창작자가 메이킹 필름 등을 직접 입증하는 <strong>'제작 프로세스 인증제'</strong>를 합산하여 0(순수 AI 생성물)에서 1(순수 인간 창작물) 사이의 고정값으로 산출됩니다.</div>
-    </div>
-
-    <div id="tab-alpha" class="tab-content">
-        <span class="badge">산출 기준: 인터페이스 슬라이더 기반 수용자의 동적 제어 수치</span>
-        <div>수요 측면(Demand Side)에서 획일화된 AI 복제 피드에 피로감을 느낀 <strong>수용자가 알고리즘의 통제권을 직접 탈환해 오는 '주도성(User Agency)'의 지표</strong>입니다. 슬라이더 가동 시 알파 값은 최대 1.5까지 커지며, 공식 내부에서 <strong>'인간지수(H)'의 가치 파워를 배율로 증폭시키는 기폭제</strong> 역할을 수행합니다.</div>
-    </div>
-
-    <div id="tab-final" class="tab-content">
-        <span class="badge">수식 진화: 1차 영화 추천 공식 ➔ 다단 구조(Multi-layered) 상생 시스템</span>
-        <div class="formula-box">SRS점수 = (신선도×0.2) + (다양성×0.3) + (참신함×0.5) <br>최종점수 = SRS점수 × (1 + 알파 × 인간지수)</div>
-        <div>초창기 분수 형태의 영화 추천 모델은 분모가 0이 될 시 수치가 무한대로 발산하는 수학적 결함이 있었습니다. 이를 2학년 때 <strong>'0~1 사이 정규화 가중치 합 공식(SRS)'</strong>으로 안정화했고, 3학년인 현재는 그 우연성 엔진 위에 <strong>'인간 중심 상생 필터'</strong>를 곱하는 다단 구조 형태로 심화 발전시켰습니다.</div>
-        <div>시뮬레이션 가동 시, <strong>AI 콘텐츠(인간지수 0)는 가중치를 받지 못해 제자리에 머물고, 투박한 인간 창작물(인간지수 0.8+)은 점수가 최대 2.5배 뻥튀기되어 역전 노출</strong>되는 지속 가능한 미디어 생태계 메커니즘을 정량적으로 증명합니다.</div>
-    </div>
-</div>
-
-<script {id="simulation-logic"}>
+<script>
     function updateVal(id, val) {
         document.getElementById(id).innerText = val;
+        runSimulation(); // 슬라이더 움직일 때 표와 점수도 실시간 연동
     }
 
     function runSimulation() {
-        const name = document.getElementById('contentName').value;
-        const fresh = parseFloat(document.getElementById('fresh
+        const f = parseFloat(document.getElementById('fresh').value);
+        const d = parseFloat(document.getElementById('diverse').value);
+        const n = parseFloat(document.getElementById('novel').value);
+        const h = parseFloat(document.getElementById('human').value);
+        const slider = parseFloat(document.getElementById('alpha').value);
+
+        const srs = (f * 0.2) + (d * 0.3) + (n * 0.5);
+        const alpha = slider * 1.5;
+        const finalScore = srs * (1 + alpha * h);
+
+        document.getElementById('resBase').innerText = srs.toFixed(4);
+        document.getElementById('resFinal').innerText = finalScore.toFixed(4);
+        
+        let diagnosis = "";
+        if (h >= 0.7 && slider >= 0.7) {
+            diagnosis = "🌟 [최상위 상생] 인간 창작자의 깊은 서사가 유저의 강력한 필터 버블 타파 의지와 만나 압도적인 추천 순위 상승을 기록했습니다. 플랫폼의 건강성이 극대화됩니다.";
+        } else if (h < 0.3) {
+            diagnosis = "🤖 [AI 효율 중심] 인간 서사가 낮은 콘텐츠이므로 가중치 버프가 제한됩니다. 슬라이더를 올려도 점수가 거의 변하지 않으며, 정보 효율성 위주의 기존 추천 방식을 따릅니다.";
+        } else {
+            diagnosis = "⚖️ [균형 노출] 기술적 우연성과 인간적 가치가 적절히 조화를 이루고 있습니다. 사용자의 피드에 다양한 관점의 콘텐츠가 골고루 섞여 배달됩니다.";
+        }
+        document.getElementById('resDiagnosis').innerText = diagnosis;
+        document.getElementById('result').style.display = 'block';
+
+        document.getElementById('scenOff').innerText = (srs * (1 + 0.5 * h)).toFixed(2);
+        document.getElementById('scenAi').innerText = (srs * (1 + 0.0 * h)).toFixed(2);
+        document.getElementById('scenMid').innerText = (srs * (1 + 0.75 * h)).toFixed(2);
+        document.getElementById('scenMax').innerText = (srs * (1 + 1.5 * h)).toFixed(2);
+    }
+
+    function openTab(evt, tabId) {
+        const contents = document.getElementsByClassName("tab-content");
+        for (let c of contents) c.classList.remove("active");
+        const btns = document.getElementsByClassName("tab-btn");
+        for (let b of btns) b.classList.remove("active");
+        document.getElementById(tabId).classList.add("active");
+        evt.currentTarget.classList.add("active");
+    }
+
+    window.onload = runSimulation;
+</script>
+
+</body>
+</html>
