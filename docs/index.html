@@ -3,337 +3,250 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Human-Centric SRS - 인간 중심의 추천 시스템</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
-            line-height: 1.6;
-            color: #333;
-        }
-        header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 4rem 2rem;
-            text-align: center;
-        }
-        header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-        }
-        header p {
-            font-size: 1.1rem;
-            opacity: 0.9;
-        }
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-        .section {
-            margin: 3rem 0;
-            padding: 2rem;
-            border-left: 4px solid #667eea;
-            background: #f8f9fa;
-            border-radius: 4px;
-        }
-        .section h2 {
-            color: #667eea;
-            margin-bottom: 1rem;
-        }
-        footer {
-            background: #333;
-            color: white;
-            text-align: center;
-            padding: 2rem;
-            margin-top: 3rem;
-        }
-        a {
-            color: #667eea;
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-    </style>
+    <title>Human-Centric SRS - 인간중심 추천 알고리즘</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <h1>🤖 Human-Centric SRS</h1>
-        <p>인간 중심의 추천 시스템</p>
-    </header>
-
-    <div class="container">
-        <div class="section">
-            <h2>📌 프로젝트 소개</h2>
-            <p>
-                본 프로젝트는 <strong>'다빈치가 된 알고리즘' 시대</strong>의 '창의성 자동화'가 초래하는 유저의 디지털 불안과 
-                플랫폼 양면 시장의 붕괴(인간 창작자 도태)를 해결하기 위해 고안되었습니다.
-            </p>
-            <p style="margin-top: 1rem;">
-                기존의 기술적 우연성 추천 시스템(SRS)을 고도화하여, <strong>인간 고유의 '불완전한 서사(결핍, 노고)'</strong>를 
-                수학적으로 우대하는 메커니즘을 제공합니다.
-            </p>
-        </div>
-
-        <div class="section">
-            <h2>🎯 핵심 목표</h2>
-            <ul style="margin-left: 2rem;">
-                <li>디지털 불안 완화</li>
-                <li>인간 창작자의 경쟁력 강화</li>
-                <li>플랫폼 양면 시장의 지속성 보장</li>
-                <li>알고리즘의 투명성 증대</li>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <h1 class="logo">🎯 Human-Centric SRS</h1>
+            <ul class="nav-links">
+                <li><a href="#overview">개요</a></li>
+                <li><a href="#solution">솔루션</a></li>
+                <li><a href="#formula">공식</a></li>
+                <li><a href="#demo">데모</a></li>
+                <li><a href="#impact">임팩트</a></li>
             </ul>
         </div>
+    </nav>
 
-        <div class="section">
-            <h2>🔗 연결</h2>
-            <p>
-                📂 <a href="https://github.com/KJA012/Human-Centric-SRS-1-" target="_blank">GitHub 저장소</a>
-            </p>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>다빈치가 된 알고리즘 시대<br>인간성을 되찾다</h1>
+            <p>AI 자동화와 인간의 창의성이 조화를 이루는 추천 알고리즘</p>
+            <button class="cta-btn" onclick="document.getElementById('demo').scrollIntoView({ behavior: 'smooth' })">데모 보기</button>
         </div>
-    </div>
+    </section>
 
-    <footer>
-        <p>&copy; 2026 Human-Centric SRS Project. All rights reserved.</p>
+    <!-- Overview Section -->
+    <section id="overview" class="section">
+        <div class="container">
+            <h2>🎯 프로젝트 개요</h2>
+            <div class="problem-grid">
+                <div class="problem-card">
+                    <div class="icon">🚨</div>
+                    <h3>디지털 불안감</h3>
+                    <p>AI 콘텐츠만 노출되는 버블 현상</p>
+                </div>
+                <div class="problem-card">
+                    <div class="icon">📉</div>
+                    <h3>양면 시장 붕괴</h3>
+                    <p>인간 창작자 도태</p>
+                </div>
+                <div class="problem-card">
+                    <div class="icon">🔒</div>
+                    <h3>선택권 박탈</h3>
+                    <p>알고리즘의 독재</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section id="solution" class="section bg-light">
+        <div class="container">
+            <h2>💡 핵심 솔루션: "안티-버블 슬라이더"</h2>
+            <div class="solution-content">
+                <div class="solution-text">
+                    <p>사용자가 <strong>능동적으로</strong> AI vs 인간 창작 콘텐츠의 비율을 조절할 수 있는 UI 슬라이더입니다.</p>
+                    <div class="slider-visual">
+                        <div class="slider-bar">
+                            <div class="slider-thumb"></div>
+                        </div>
+                        <div class="slider-labels">
+                            <span>🤖 AI 중심</span>
+                            <span>👨‍🎨 인간 중심</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="solution-image">
+                    <div class="benefit-list">
+                        <h4>✅ 사용자 관점</h4>
+                        <ul>
+                            <li>선택권 회복</li>
+                            <li>신뢰도 향상</li>
+                            <li>개인화된 경험</li>
+                        </ul>
+                        <h4 style="margin-top: 20px;">✅ 창작자 관점</h4>
+                        <ul>
+                            <li>인간 창작 생존 가능</li>
+                            <li>공정한 경쟁 환경</li>
+                            <li>지속 가능한 생태계</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Formula Section -->
+    <section id="formula" class="section">
+        <div class="container">
+            <h2>📐 권장 점수 계산 공식</h2>
+            <div class="formula-box">
+                <div class="formula-main">
+                    <h3>최종 점수 공식</h3>
+                    <div class="math-formula">
+                        최종점수 = 우연성점수 × (1 + 알파 × 인간지수)
+                    </div>
+                </div>
+            </div>
+            
+            <div class="formula-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>변수</th>
+                            <th>범위</th>
+                            <th>설명</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>우연성점수</strong></td>
+                            <td>0.0 ~ 1.0</td>
+                            <td>콘텐츠의 기술적 신선도 및 다양성</td>
+                        </tr>
+                        <tr>
+                            <td><strong>인간지수</strong></td>
+                            <td>0.0 ~ 1.0</td>
+                            <td>AI 탐지 모델로 계산한 인간 저작 확률</td>
+                        </tr>
+                        <tr>
+                            <td><strong>알파</strong></td>
+                            <td>0.5 ~ 1.5</td>
+                            <td>플랫폼 상생 가중치 (사용자 슬라이더 반영)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>최종점수</strong></td>
+                            <td>0.7 ~ 2.0+</td>
+                            <td>추천 알고리즘에 사용되는 최종 순위 점수</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="alpha-explanation">
+                <h3>🔑 알파(가중치) 계산 규칙</h3>
+                <div class="alpha-rules">
+                    <div class="rule-item">
+                        <span class="tag off">슬라이더 OFF</span>
+                        <p><strong>알파 = 0.5</strong> (기본 균형)</p>
+                    </div>
+                    <div class="rule-item">
+                        <span class="tag on">슬라이더 ON</span>
+                        <p><strong>알파 = 슬라이더값 × 1.5</strong> (최대 1.5)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demo Section -->
+    <section id="demo" class="section bg-light">
+        <div class="container">
+            <h2>🎮 인터랙티브 데모</h2>
+            <div class="demo-wrapper">
+                <div class="demo-controls">
+                    <h3>슬라이더 값을 조절해보세요</h3>
+                    <div class="slider-group">
+                        <label for="sliderToggle">슬라이더 활성화</label>
+                        <input type="checkbox" id="sliderToggle" checked>
+                    </div>
+                    <div class="slider-group">
+                        <label for="sliderValue">슬라이더 값: <span id="sliderValueDisplay">0.5</span></label>
+                        <input type="range" id="sliderValue" min="0" max="1" step="0.05" value="0.5">
+                    </div>
+                    <div class="demo-params">
+                        <div class="param-input">
+                            <label for="srsScore">우연성점수 (SRS Score)</label>
+                            <input type="number" id="srsScore" min="0" max="1" step="0.01" value="0.7">
+                        </div>
+                        <div class="param-input">
+                            <label for="humanIndex">인간지수 (Human Index)</label>
+                            <input type="number" id="humanIndex" min="0" max="1" step="0.01" value="0.8">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="demo-results">
+                    <h3>📊 계산 결과</h3>
+                    <div class="result-card">
+                        <div class="result-row">
+                            <span class="label">현재 슬라이더 값:</span>
+                            <span class="value" id="resultSliderValue">0.5</span>
+                        </div>
+                        <div class="result-row">
+                            <span class="label">알파 (Alpha):</span>
+                            <span class="value" id="resultAlpha">0.75</span>
+                        </div>
+                        <div class="divider"></div>
+                        <div class="result-row">
+                            <span class="label">우연성점수:</span>
+                            <span class="value" id="resultSRS">0.70</span>
+                        </div>
+                        <div class="result-row">
+                            <span class="label">인간지수:</span>
+                            <span class="value" id="resultHuman">0.80</span>
+                        </div>
+                        <div class="divider"></div>
+                        <div class="result-row final">
+                            <span class="label">최종 점수:</span>
+                            <span class="value" id="resultFinal">1.12</span>
+                        </div>
+                        <p class="calculation" id="resultCalculation"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Section -->
+    <section id="impact" class="section">
+        <div class="container">
+            <h2>💼 비즈니스 임팩트</h2>
+            <div class="impact-comparison">
+                <div class="impact-card before">
+                    <h3>❌ Before (현재)</h3>
+                    <ul>
+                        <li>사용자: AI 콘텐츠에 갇혀 있음</li>
+                        <li>창작자: 인간은 도태됨</li>
+                        <li>플랫폼: 신뢰도 하락</li>
+                    </ul>
+                </div>
+                <div class="arrow">→</div>
+                <div class="impact-card after">
+                    <h3>✅ After (솔루션 적용)</h3>
+                    <ul>
+                        <li>사용자: 선택권 회복 (슬라이더 제어)</li>
+                        <li>창작자: 인간 창작 콘텐츠 생존 가능</li>
+                        <li>플랫폼: 양면 시장 건강성 유지</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Human-Centric SRS Project | 🧑‍💻 Developer: <a href="https://github.com/KJA012" target="_blank">KJA012</a></p>
+            <p><a href="https://github.com/KJA012/Human-Centric-SRS-1-" target="_blank">📂 GitHub Repository</a></p>
+        </div>
     </footer>
-</body>
-</html>        .value-display { font-weight: bold; color: #ff5500; width: 15%; text-align: right; }
-        
-        /* 시그니처 주황색 버튼 */
-        button { 
-            width: 100%; padding: 13px; 
-            background: linear-gradient(135deg, #ff7700, #ff4400); 
-            color: white; border: none; border-radius: 6px; 
-            font-size: 16px; font-weight: bold; margin-top: 25px; 
-            cursor: pointer; transition: 0.2s; 
-            box-shadow: 0 4px 10px rgba(255,68,0,0.2); 
-        }
-        button:hover { background: linear-gradient(135deg, #e66b00, #cc3700); }
-        
-        /* 📸 캡처본 반영: 분석 결과창 디자인 포맷 */
-        .result-box { margin-top: 25px; padding: 25px; background: white; border: 1px solid #ffe0cc; border-radius: 16px; display: none; box-shadow: 0 4px 20px rgba(255,102,0,0.05); }
-        .result-header { font-size: 13px; color: #ff6600; font-weight: bold; margin-bottom: 5px; }
-        .result-score { font-size: 42px; font-weight: bold; color: #00A676; margin-bottom: 10px; } /* 캡처본 특유의 그린 컬러 */
-        .result-score span { font-size: 20px; color: #2D2D2D; font-weight: normal; margin-left: 5px; }
-        .diagnosis { margin-top: 10px; font-size: 14px; color: #334155; line-height: 1.6; background: #F8FAF9; padding: 15px; border-left: 4px solid #ff6600; border-radius: 0 8px 8px 0; }
-        .base-srs { font-size: 12px; color: #64748B; margin-top: 10px; border-top: 1px solid #f1f5f9; padding-top: 10px; }
-        
-        /* 📸 캡처본 반영: 하단 시나리오 분석 표 */
-        .comparison-section { margin-top: 30px; border-top: 1px solid #ffe5d4; padding-top: 25px; }
-        .comparison-section h2 { font-size: 16px; color: #ff4400; margin-bottom: 15px; font-weight: bold; }
-        table { width: 100%; border-collapse: collapse; font-size: 13px; text-align: left; }
-        th { background: #fff5ee; color: #64748B; padding: 12px 10px; border-bottom: 2px solid #ffd8c2; font-weight: normal; }
-        td { padding: 12px 10px; border-bottom: 1px solid #fceee6; }
-        .tag { padding: 4px 8px; border-radius: 4px; font-size: 11px; font-weight: bold; }
-        .tag-base { background: #EBF5FF; color: #0066CC; }
-        .tag-ai { background: #FFF1F1; color: #CC0000; }
-        .tag-human { background: #F0FFF4; color: #008855; }
 
-        /* 하단 탭 메뉴 */
-        .tab-container { margin-top: 30px; background: #fff; padding: 20px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); width: 100%; max-width: 550px; box-sizing: border-box; border: 1px solid #fceee6; }
-        .tab-menu { display: flex; flex-wrap: wrap; border-bottom: 2px solid #fceee6; padding-bottom: 10px; gap: 5px; }
-        .tab-btn { padding: 8px 14px; border: 1px solid #ffe0cc; background: #fff; cursor: pointer; border-radius: 20px; font-weight: bold; font-size: 12px; color: #666; transition: 0.2s; }
-        .tab-btn:hover { background: #fff5ee; color: #ff5500; }
-        .tab-btn.active { background: #ff6600; color: white; border-color: #ff6600; }
-        .tab-content { display: none; padding: 20px 10px; line-height: 1.6; font-size: 14px; color: #444; }
-        .tab-content.active { display: block; }
-        .formula-box { background: #fff5ee; padding: 12px; border-radius: 6px; font-family: monospace; font-weight: bold; margin: 10px 0; color: #cc3700; font-size: 13px; border: 1px dashed #ffb380; }
-        .badge { display: inline-block; padding: 3px 8px; background: #ff6600; color: white; border-radius: 4px; font-size: 11px; margin-bottom: 8px; }
-    </style>
-</head>
-<body>
-
-<div class="container">
-    <h1>📱 Human-Centric SRS 시뮬레이터</h1>
-    <div class="subtitle">필터 버블 타파와 인간 창작자 상생을 위한 알고리즘 제어 엔진</div>
-    <hr style="border: 0; height: 1px; background: #ffe5d4;">
-
-    <label for="contentName">🎬 콘텐츠 이름</label>
-    <input type="text" id="contentName" value="나의 투박한 실패 극복 브이로그">
-
-    <label for="freshness">⏱️ 콘텐츠 신선도 지수 (Weight: 20%)</label>
-    <div class="slider-group">
-        <input type="range" id="freshness" min="0" max="1" step="0.1" value="0.7" oninput="updateVal('freshVal', this.value)">
-        <span id="freshVal" class="value-display">0.7</span>
-    </div>
-
-    <label for="diversity">🧩 카테고리 다양성 지수 (Weight: 30%)</label>
-    <div class="slider-group">
-        <input type="range" id="diversity" min="0" max="1" step="0.1" value="0.8" oninput="updateVal('divVal', this.value)">
-        <span id="divVal" class="value-display">0.8</span>
-    </div>
-
-    <label for="novelty">🎲 메타데이터 참신함 지수 (Weight: 50%)</label>
-    <div class="slider-group">
-        <input type="range" id="novelty" min="0" max="1" step="0.1" value="0.6" oninput="updateVal('novelVal', this.value)">
-        <span id="novelVal" class="value-display">0.6</span>
-    </div>
-
-    <hr style="border: 0; height: 1px; background: #ffe5d4; margin-top: 20px;">
-
-    <label for="hIndex">🧬 인간 서사 지수 (H Index)</label>
-    <div class="slider-group">
-        <input type="range" id="hIndex" min="0" max="1" step="0.1" value="0.8" oninput="updateVal('hVal', this.value)">
-        <span id="hVal" class="value-display">0.8</span>
-    </div>
-
-    <label for="sliderVal">🎛️ 안티-버블 슬라이더 가동 수치 (Alpha)</label>
-    <div class="slider-group">
-        <input type="range" id="sliderVal" min="0" max="1" step="0.1" value="0.5" oninput="updateVal('sliderValDisplay', this.value)">
-        <span id="sliderValDisplay" class="value-display">0.5</span>
-    </div>
-
-    <button onclick="runSimulation()">알고리즘 시뮬레이션 가동 및 가중치 분석</button>
-
-    <div id="resultBox" class="result-box">
-        <div class="result-header">분석 결과 도출됨</div>
-        <div class="result-score"><span id="resFinal">0.7622</span> <span>점</span></div>
-        <div class="diagnosis" id="resDiagnosis"></div>
-        <div class="base-srs">기본 SRS 점수: <span id="resOld">0.7400</span></div>
-    </div>
-
-    <div class="comparison-section">
-        <h2>🎯 실제 플랫폼 적용 시나리오 분석</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>슬라이더 설정</th>
-                    <th>알파(α)</th>
-                    <th>최종 점수</th>
-                    <th>플랫폼 내 영향력</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><span class="tag tag-base">기본 (OFF)</span></td>
-                    <td>0.50</td>
-                    <td><span id="scenOff">0.81</span></td>
-                    <td>전통적 추천 로직 유지</td>
-                </tr>
-                <tr>
-                    <td><span class="tag tag-ai">AI 콘텐츠 (0.0)</span></td>
-                    <td>0.00</td>
-                    <td><span id="scenAi">0.74</span></td>
-                    <td>정보 효율적 노출</td>
-                </tr>
-                <tr>
-                    <td><span class="tag tag-human">중간 선호 (0.5)</span></td>
-                    <td>0.75</td>
-                    <td><span id="scenMid">0.85</span></td>
-                    <td>창작물 14% 부스트</td>
-                </tr>
-                <tr>
-                    <td><span class="tag tag-human" style="background:#ff5500; color:white;">인간 선호 (1.0)</span></td>
-                    <td>1.50</td>
-                    <td><span id="scenMax">0.96</span></td>
-                    <td>인간 서사 57% 부스트</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-</div>
-
-<div class="tab-container">
-    <h3 style="margin-top:0; color:#333; font-size: 16px;">🔍 알고리즘 상세 지표 설명서</h3>
-    <div class="tab-menu">
-        <button class="tab-btn active" onclick="openTab(event, 'tab-fresh')">⏱️ 신선도</button>
-        <button class="tab-btn" onclick="openTab(event, 'tab-div')">🧩 다양성</button>
-        <button class="tab-btn" onclick="openTab(event, 'tab-novel')">🎲 참신함</button>
-        <button class="tab-btn" onclick="openTab(event, 'tab-human')">🧬 인간지수</button>
-        <button class="tab-btn" onclick="openTab(event, 'tab-final')">📊 최종수식</button>
-    </div>
-
-    <div id="tab-fresh" class="tab-content active">
-        <span class="badge">F-Index</span>
-        <div>유저가 이미 시청한 뻔한 키워드를 필터링하고 장르적 시간 장벽을 계산하여 시청 범주의 고착화를 차단하는 신선도 지표입니다.</div>
-    </div>
-    <div id="tab-div" class="tab-content">
-        <span class="badge">D-Index</span>
-        <div>평소 자주 즐기던 메인 풀 영역과 추천할 타겟 장르 간의 '벡터 거리(이질성)'를 연산해 필터 버블 바깥으로 시야를 넓힙니다.</div>
-    </div>
-    <div id="tab-novel" class="tab-content">
-        <span class="badge">N-Index</span>
-        <div>겉보기엔 비유사하나 숨어있는 깊은 메타데이터 차원의 연관 계수를 추출해 진정한 발견의 우연성(Serendipity)을 견인합니다. (50% 배정)</div>
-    </div>
-    <div id="tab-human" class="tab-content">
-        <span class="badge">H-Index</span>
-        <div>생성형 AI 복제 피드와 대조되는 인간 창작물의 불완전하지만 가치 있는 노고의 총량으로, 유저 집단지성 투표 시스템을 기반으로 산출됩니다.</div>
-    </div>
-    <div id="tab-final" class="tab-content">
-        <span class="badge">Formula</span>
-        <div class="formula-box">SRS점수 = (신선도×0.2) + (다양성×0.3) + (참신함×0.5) <br>최종점수 = SRS점수 × (1 + α × H)</div>
-        <div>2학년 연구 모델(SRS 정규화 지수)을 베이스 삼아, 3학년의 핵심 기획안인 유저 알고리즘 제어 수치 알파(α)와 인간성(H) 가중치를 융합한 다단 메커니즘입니다.</div>
-    </div>
-</div>
-
-<script>
-    // 슬라이더 변경 시 즉시 연산 반영 및 멈춤 에러 방지 함수
-    function updateVal(id, val) {
-        document.getElementById(id).innerText = val;
-        runSimulation(); 
-    }
-
-    function runSimulation() {
-        const fresh = parseFloat(document.getElementById('freshness').value);
-        const div = parseFloat(document.getElementById('diversity').value);
-        const novel = parseFloat(document.getElementById('novelty').value);
-        const h = parseFloat(document.getElementById('hIndex').value);
-        const slider = parseFloat(document.getElementById('sliderVal').value);
-
-        // 1. 기본 SRS 스코어 연산
-        const srsScore = (fresh * 0.2) + (div * 0.3) + (novel * 0.5);
-        
-        // 2. 최종 알파 부스터 연산
-        const alpha = slider * 1.5;
-        const finalScore = srsScore * (1 + alpha * h);
-
-        // 3. 캡처본 레이아웃 데이터 주입
-        document.getElementById('resOld').innerText = srsScore.toFixed(4);
-        document.getElementById('resFinal').innerText = finalScore.toFixed(4);
-
-        let diagnosisText = "";
-        if (h < 0.3) {
-            diagnosisText = `🤖 [AI 효율 중심] 인간 서사가 낮은 콘텐츠이므로 가중치 버프가 제한됩니다. 슬라이더를 올려도 점수가 거의 변하지 않으며, 정보 효율성 위주의 기존 추천 방식을 따릅니다.`;
-        } else if (finalScore > srsScore) {
-            diagnosisText = `🔥 [안티-버블 가동 효과] 인간 고유 서사 지수(${h})와 사용자의 알고리즘 조절권 알파(${alpha.toFixed(2)})가 결합되어 기존 기술 지표 점수 대비 최종 노출 순위가 다이내믹하게 상향 조정되었습니다.`;
-        } else {
-            diagnosisText = `알고리즘 평시 제어 상태입니다. 안티-버블 슬라이더를 올리지 않으면 전통적 지표(SRS)를 기반으로만 노출 점수가 결정됩니다.`;
-        }
-        document.getElementById('resDiagnosis').innerText = diagnosisText;
-        document.getElementById('resultBox').style.display = 'block';
-
-        // 4. 하단 실제 플랫폼 적용 시나리오 표 실시간 계산식 주입
-        document.getElementById('scenOff').innerText = (srsScore * (1 + 0.5 * h)).toFixed(2);
-        document.getElementById('scenAi').innerText = (srsScore * (1 + 0.0 * h)).toFixed(2);
-        document.getElementById('scenMid').innerText = (srsScore * (1 + 0.75 * h)).toFixed(2);
-        document.getElementById('scenMax').innerText = (srsScore * (1 + 1.5 * h)).toFixed(2);
-    }
-
-    // 탭 메뉴 핸들러
-    function openTab(evt, tabId) {
-        var i, tabcontent, tablinks;
-        tabcontent = document.getElementsByClassName("tab-content");
-        for (i = 0; i < tabcontent.length; i++) {
-            tabcontent[i].classList.remove("active");
-        }
-        tablinks = document.getElementsByClassName("tab-btn");
-        for (i = 0; i < tablinks.length; i++) {
-            tablinks[i].classList.remove("active");
-        }
-        document.getElementById(tabId).classList.add("active");
-        evt.currentTarget.classList.add("active");
-    }
-
-    // 첫 로드 시 자동 계산 가동
-    window.onload = function() {
-        runSimulation();
-    };
-</script>
-
+    <script src="script.js"></script>
 </body>
 </html>
